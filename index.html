@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário Capilar - Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; }
+            .no-print { display: none; }
+            .page { page-break-after: always; }
+            .a4-container { 
+                width: 100%; 
+                margin: 0; 
+                padding: 8mm; 
+                box-shadow: none; 
+                font-size: 11px;
+            }
+            .border-l-4 { border-left: none; padding-left: 0; }
+            .space-y-6 > * + * { margin-top: 12px; }
+            .checkbox-group { gap: 8px; }
+            .grid { gap: 8px; }
+        }
+        
+        .a4-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 15mm;
+            box-sizing: border-box;
+            font-size: 13px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .a4-container {
+                width: 100%;
+                padding: 15px;
+                box-shadow: none;
+            }
+        }
+        
+        select, input[type="text"], input[type="number"], textarea {
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            height: 40px;
+        }
+        
+        textarea {
+            height: auto;
+            min-height: 80px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 py-8">
+    <div class="a4-container">
+        <!-- Cabeçalho -->
+        <div class="flex justify-between items-center mb-8 border-b-2 border-blue-600 pb-6">
+            <div class="text-left">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">QUESTIONÁRIO PACIENTE</h1>
+                <p class="text-gray-600">Avaliação Capilar</p>
+            </div>
+            <div class="text-right">
+                <div class="w-14 h-14 bg-blue-600 rounded-full ml-auto mb-2 flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">LOGO</span>
+                </div>
+                <p class="text-sm font-semibold text-gray-800">CLÍNICA CAPILAR</p>
+            </div>
+        </div>
+
+        <!-- Dados do Paciente -->
+        <div class="grid grid-cols-1 gap-3 mb-6 bg-gray-50 p-3 rounded-lg">
+            <div class="grid grid-cols-12 gap-3">
+                <div class="col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Data:</label>
+                    <input type="date" class="w-full text-sm" id="data">
+                </div>
+                <div class="col-span-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Paciente:</label>
+                    <input type="text" class="w-full text-sm" placeholder="Nome completo" id="nome-paciente">
+                </div>
+                <div class="col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Idade:</label>
+                    <input type="number" class="w-full text-sm" placeholder="Anos" id="idade-paciente">
+                </div>
+                <div class="col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Profissão:</label>
+                    <input type="text" class="w-full text-sm" placeholder="Profissão" id="profissao-paciente">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Convênio Médico:</label>
+                    <input type="text" class="w-full text-sm" placeholder="Nome do convênio" id="convenio-paciente">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Como nos conheceu:</label>
+                    <select class="w-full text-sm" id="conheceu-paciente">
+                        <option value="">Selecione...</option>
+                        <option value="google">Google</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="indicacao">Indicação</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questionário -->
+        <div class="space-y-4">
+            <!-- Pergunta 1 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">1. Queixa Principal:</label>
+                <select class="w-full mb-3">
+                    <option value="">Selecione...</option>
+                    <option value="queda">Queda de cabelo</option>
+                    <option value="falhas">Falhas</option>
+                    <option value="quebra">Quebra de fios</option>
+                    <option value="calvicie">Calvície</option>
+                    <option value="outros">Outros</option>
+                </select>
+                <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1">Há quanto tempo:</label>
+                    <input type="text" class="w-full" placeholder="Há quanto tempo apresenta o problema">
+                </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">2. Em média quantos fios caem por dia:</label>
+                <input type="text" class="w-full mb-3" placeholder="Número aproximado de fios">
+                <p class="text-sm text-gray-600 mb-2">Onde observa a queda:</p>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="banho">
+                        <label for="banho" class="text-sm">No banho</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="escova">
+                        <label for="escova" class="text-sm">Quando escova</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="chao">
+                        <label for="chao" class="text-sm">No chão</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="roupa">
+                        <label for="roupa" class="text-sm">Na roupa</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="travesseiro">
+                        <label for="travesseiro" class="text-sm">No travesseiro</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">3. O problema está:</label>
+                <select class="w-full">
+                    <option value="">Selecione...</option>
+                    <option value="estavel">Estável</option>
+                    <option value="aumentando">Aumentando</option>
+                </select>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">4. O cabelo apresenta alguma mudança:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fino">
+                        <label for="fino" class="text-sm">Mais fino</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="crespo">
+                        <label for="crespo" class="text-sm">Mais crespo</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quebradico">
+                        <label for="quebradico" class="text-sm">Mais quebradiço</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">5. Apresenta alterações no couro cabeludo:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="oleosidade">
+                        <label for="oleosidade" class="text-sm">Oleosidade</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="caspa">
+                        <label for="caspa" class="text-sm">Caspa</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="crostas">
+                        <label for="crostas" class="text-sm">Crostas</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="descamacao">
+                        <label for="descamacao" class="text-sm">Descamação</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="vermelhidao">
+                        <label for="vermelhidao" class="text-sm">Vermelhidão</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="coceira">
+                        <label for="coceira" class="text-sm">Coceira</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ardor">
+                        <label for="ardor" class="text-sm">Ardor</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="odor">
+                        <label for="odor" class="text-sm">Odor</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="secrecao">
+                        <label for="secrecao" class="text-sm">Secreção</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="dor">
+                        <label for="dor" class="text-sm">Dor</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 6 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">6. Já apresentou outras crises:</label>
+                <div class="flex gap-4 mb-2">
+                    <div class="checkbox-item">
+                        <input type="radio" name="crises" id="crises-sim">
+                        <label for="crises-sim" class="text-sm">Sim</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="crises" id="crises-nao">
+                        <label for="crises-nao" class="text-sm">Não</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Quando:</label>
+                    <input type="text" class="w-full" placeholder="Período das crises anteriores">
+                </div>
+            </div>
+
+            <!-- Pergunta 7 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">7. Já fez algum tratamento para este problema:</label>
+                <div class="flex gap-4 mb-3">
+                    <div class="checkbox-item">
+                        <input type="radio" name="tratamento" id="trat-nao">
+                        <label for="trat-nao" class="text-sm">Não</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="tratamento" id="trat-sim">
+                        <label for="trat-sim" class="text-sm">Sim</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-sm text-gray-600 mb-1">Quando:</label>
+                    <input type="text" class="w-full" placeholder="Período do tratamento">
+                </div>
+                <p class="text-sm text-gray-600 mb-2">Tipos de tratamento realizados:</p>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="formulas">
+                        <label for="formulas" class="text-sm">Fórmulas via oral</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="solucao">
+                        <label for="solucao" class="text-sm">Solução capilar</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="mesoterapia">
+                        <label for="mesoterapia" class="text-sm">Mesoterapia</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="prp">
+                        <label for="prp" class="text-sm">PRP</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="microagulhamento">
+                        <label for="microagulhamento" class="text-sm">Microagulhamento</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="shampoo">
+                        <label for="shampoo" class="text-sm">Shampoo antiqueda</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="laser">
+                        <label for="laser" class="text-sm">Laserterapia</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="mmp">
+                        <label for="mmp" class="text-sm">MMP</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="terapia">
+                        <label for="terapia" class="text-sm">Terapia capilar</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 8 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">8. Está tomando alguma medicação:</label>
+                <div class="flex gap-4 mb-2">
+                    <div class="checkbox-item">
+                        <input type="radio" name="medicacao" id="med-nao">
+                        <label for="med-nao" class="text-sm">Não</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="medicacao" id="med-sim">
+                        <label for="med-sim" class="text-sm">Sim</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Quais:</label>
+                    <textarea class="w-full h-18" placeholder="Liste as medicações em uso"></textarea>
+                </div>
+            </div>
+
+            <!-- Pergunta 9 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">9. Com qual frequência lava os cabelos:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="radio" name="frequencia" id="freq-1x">
+                        <label for="freq-1x" class="text-sm">1x semana</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="frequencia" id="freq-2x">
+                        <label for="freq-2x" class="text-sm">2x semana</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="frequencia" id="freq-3x">
+                        <label for="freq-3x" class="text-sm">3x semana</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="frequencia" id="freq-todos">
+                        <label for="freq-todos" class="text-sm">Todos os dias</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 10 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">10. Quais os shampoos, condicionadores e outros produtos capilares em uso:</label>
+                <textarea class="w-full h-18" placeholder="Liste todos os produtos capilares utilizados"></textarea>
+            </div>
+
+            <!-- Pergunta 11 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">11. Faz química no cabelo:</label>
+                <div class="flex gap-4 mb-2">
+                    <div class="checkbox-item">
+                        <input type="radio" name="quimica" id="quim-nao">
+                        <label for="quim-nao" class="text-sm">Não</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="quimica" id="quim-sim">
+                        <label for="quim-sim" class="text-sm">Sim</label>
+                    </div>
+                </div>
+                <div class="checkbox-group mb-3">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tintura">
+                        <label for="tintura" class="text-sm">Tintura</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tonalizante">
+                        <label for="tonalizante" class="text-sm">Tonalizante</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="botox">
+                        <label for="botox" class="text-sm">Botox</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="progressiva">
+                        <label for="progressiva" class="text-sm">Progressiva</label>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-2">
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">Outros:</label>
+                        <input type="text" class="w-full text-sm" placeholder="Outros procedimentos">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">Frequência:</label>
+                        <input type="text" class="w-full text-sm" placeholder="Frequência">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">Últimos 4 meses:</label>
+                        <input type="text" class="w-full text-sm" placeholder="O que fez">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pergunta 12 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">12. Utiliza Chapinha / Escova:</label>
+                <div class="flex gap-4 mb-2">
+                    <div class="checkbox-item">
+                        <input type="radio" name="chapinha" id="chap-nao">
+                        <label for="chap-nao" class="text-sm">Não</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="chapinha" id="chap-sim">
+                        <label for="chap-sim" class="text-sm">Sim</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-600 mb-1">Frequência:</label>
+                    <input type="text" class="w-full text-sm" placeholder="Frequência de uso">
+                </div>
+            </div>
+
+            <!-- Pergunta 13 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">13. Tem alongamento:</label>
+                <div class="flex gap-4 mb-2">
+                    <div class="checkbox-item">
+                        <input type="radio" name="alongamento" id="along-nao">
+                        <label for="along-nao" class="text-sm">Não</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" name="alongamento" id="along-sim">
+                        <label for="along-sim" class="text-sm">Sim</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-600 mb-1">Há quanto tempo:</label>
+                    <input type="text" class="w-full text-sm" placeholder="Tempo com alongamento">
+                </div>
+            </div>
+
+            <!-- Pergunta 14 -->
+            <div class="border-l-4 border-blue-500 pl-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">14. Histórico de calvície na família:</label>
+                <p class="text-xs text-gray-600 mb-3">Classifique e identifique o parentesco (Ex: Pai, Tipo III)</p>
+                
+                <!-- Escalas de Calvície -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Escala Masculina -->
+                    <div class="border rounded-lg p-3 bg-gray-50">
+                        <h4 class="text-sm font-semibold text-center mb-2">Escala Masculina (Norwood)</h4>
+                        <svg viewBox="0 0 300 200" class="w-full h-32 border rounded">
+                            <!-- Tipo I -->
+                            <g>
+                                <circle cx="50" cy="40" r="25" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <text x="50" y="70" text-anchor="middle" font-size="10" fill="#333">Tipo I</text>
+                                <text x="50" y="82" text-anchor="middle" font-size="8" fill="#666">Normal</text>
+                            </g>
+                            <!-- Tipo II -->
+                            <g>
+                                <path d="M 100 15 Q 125 10 150 15 Q 150 25 145 35 Q 125 40 100 35 Q 100 25 100 15" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <text x="125" y="70" text-anchor="middle" font-size="10" fill="#333">Tipo II</text>
+                                <text x="125" y="82" text-anchor="middle" font-size="8" fill="#666">Leve</text>
+                            </g>
+                            <!-- Tipo III -->
+                            <g>
+                                <path d="M 200 15 Q 215 10 230 15 Q 235 25 230 35 Q 215 40 200 35 Q 195 25 200 15" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <path d="M 205 35 Q 215 45 225 35" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="215" y="70" text-anchor="middle" font-size="10" fill="#333">Tipo III</text>
+                                <text x="215" y="82" text-anchor="middle" font-size="8" fill="#666">Moderada</text>
+                            </g>
+                            <!-- Tipo IV -->
+                            <g>
+                                <path d="M 50 115 Q 65 110 80 115 Q 85 125 80 135 Q 65 140 50 135 Q 45 125 50 115" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <circle cx="65" cy="145" r="8" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="65" y="170" text-anchor="middle" font-size="10" fill="#333">Tipo IV</text>
+                                <text x="65" y="182" text-anchor="middle" font-size="8" fill="#666">Avançada</text>
+                            </g>
+                            <!-- Tipo V -->
+                            <g>
+                                <path d="M 125 115 Q 135 110 145 115 Q 150 125 145 135 Q 135 140 125 135 Q 120 125 125 115" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <circle cx="135" cy="145" r="12" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="135" y="170" text-anchor="middle" font-size="10" fill="#333">Tipo V</text>
+                                <text x="135" y="182" text-anchor="middle" font-size="8" fill="#666">Severa</text>
+                            </g>
+                            <!-- Tipo VI -->
+                            <g>
+                                <path d="M 200 115 Q 210 110 220 115 Q 225 125 220 135 Q 210 140 200 135 Q 195 125 200 115" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                                <circle cx="210" cy="145" r="15" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="210" y="170" text-anchor="middle" font-size="10" fill="#333">Tipo VI</text>
+                                <text x="210" y="182" text-anchor="middle" font-size="8" fill="#666">Muito Severa</text>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <!-- Escala Feminina -->
+                    <div class="border rounded-lg p-3 bg-gray-50">
+                        <h4 class="text-sm font-semibold text-center mb-2">Escala Feminina (Ludwig)</h4>
+                        <svg viewBox="0 0 300 200" class="w-full h-32 border rounded">
+                            <!-- Tipo I -->
+                            <g>
+                                <ellipse cx="75" cy="40" rx="30" ry="20" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <path d="M 60 35 Q 75 30 90 35" fill="none" stroke="#654321" stroke-width="1"/>
+                                <text x="75" y="75" text-anchor="middle" font-size="10" fill="#333">Tipo I</text>
+                                <text x="75" y="87" text-anchor="middle" font-size="8" fill="#666">Leve</text>
+                            </g>
+                            <!-- Tipo II -->
+                            <g>
+                                <ellipse cx="150" cy="40" rx="30" ry="20" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <path d="M 130 35 Q 150 25 170 35" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="150" y="75" text-anchor="middle" font-size="10" fill="#333">Tipo II</text>
+                                <text x="150" y="87" text-anchor="middle" font-size="8" fill="#666">Moderada</text>
+                            </g>
+                            <!-- Tipo III -->
+                            <g>
+                                <ellipse cx="225" cy="40" rx="30" ry="20" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <path d="M 205 35 Q 225 20 245 35" fill="none" stroke="#654321" stroke-width="3"/>
+                                <circle cx="225" cy="50" r="8" fill="none" stroke="#654321" stroke-width="2"/>
+                                <text x="225" y="75" text-anchor="middle" font-size="10" fill="#333">Tipo III</text>
+                                <text x="225" y="87" text-anchor="middle" font-size="8" fill="#666">Severa</text>
+                            </g>
+                            <!-- Padrão Difuso -->
+                            <g>
+                                <ellipse cx="150" cy="140" rx="40" ry="25" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+                                <circle cx="135" cy="135" r="3" fill="none" stroke="#654321" stroke-width="1"/>
+                                <circle cx="150" cy="130" r="3" fill="none" stroke="#654321" stroke-width="1"/>
+                                <circle cx="165" cy="135" r="3" fill="none" stroke="#654321" stroke-width="1"/>
+                                <circle cx="140" cy="150" r="3" fill="none" stroke="#654321" stroke-width="1"/>
+                                <circle cx="160" cy="150" r="3" fill="none" stroke="#654321" stroke-width="1"/>
+                                <text x="150" y="175" text-anchor="middle" font-size="10" fill="#333">Difusa</text>
+                                <text x="150" y="187" text-anchor="middle" font-size="8" fill="#666">Generalizada</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Descreva o histórico familiar e grau de calvície:</label>
+                    <textarea class="w-full h-16 text-sm" placeholder="Ex: Pai - Tipo III Norwood, Mãe - Tipo II Ludwig, Avô paterno - Tipo V Norwood"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="flex gap-4 mt-6 no-print flex-wrap">
+            <button onclick="imprimirRespostas()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                Imprimir para Médico
+            </button>
+            <button onclick="enviarWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+                Enviar por WhatsApp
+            </button>
+            <button onclick="limparFormulario()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                Limpar Formulário
+            </button>
+        </div>
+
+        <!-- Área de impressão das respostas -->
+        <div id="respostas-impressao" class="hidden print:block">
+            <div class="flex justify-between items-center mb-6 border-b-2 border-blue-600 pb-4">
+                <div class="text-left">
+                    <h1 class="text-xl font-bold text-gray-800 mb-1">RESUMO - QUESTIONÁRIO PACIENTE</h1>
+                    <p class="text-gray-600 text-sm">Avaliação Capilar</p>
+                </div>
+                <div class="text-right">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full ml-auto mb-2 flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">LOGO</span>
+                    </div>
+                    <p class="text-xs font-semibold text-gray-800">CLÍNICA CAPILAR</p>
+                </div>
+            </div>
+            <div id="conteudo-respostas"></div>
+        </div>
+    </div>
+
+    <script>
+        // Definir data atual
+        document.getElementById('data').value = new Date().toISOString().split('T')[0];
+
+        function imprimirRespostas() {
+            const respostas = coletarRespostas();
+            const conteudo = gerarConteudoImpressao(respostas);
+            document.getElementById('conteudo-respostas').innerHTML = conteudo;
+            
+            // Ocultar formulário e mostrar apenas respostas
+            document.querySelector('.a4-container > *:not(#respostas-impressao)').style.display = 'none';
+            document.getElementById('respostas-impressao').classList.remove('hidden');
+            
+            setTimeout(() => {
+                window.print();
+                // Restaurar visualização após impressão
+                document.querySelector('.a4-container > *:not(#respostas-impressao)').style.display = 'block';
+                document.getElementById('respostas-impressao').classList.add('hidden');
+            }, 100);
+        }
+
+        function coletarRespostas() {
+            const respostas = {};
+            
+            // Dados do paciente
+            respostas.data = document.getElementById('data').value;
+            respostas.paciente = document.getElementById('nome-paciente').value;
+            respostas.idade = document.getElementById('idade-paciente').value;
+            respostas.profissao = document.getElementById('profissao-paciente').value;
+            respostas.convenio = document.getElementById('convenio-paciente').value;
+            respostas.conheceu = document.getElementById('conheceu-paciente').selectedOptions[0]?.text || '';
+
+            respostas.perguntas = [];
+            
+            // Coletar respostas por pergunta
+            const perguntasDivs = document.querySelectorAll('.border-l-4');
+            
+            perguntasDivs.forEach(perguntaDiv => {
+                const titulo = perguntaDiv.querySelector('label').textContent;
+                const respostasPergunta = [];
+                
+                // Selects
+                const selects = perguntaDiv.querySelectorAll('select');
+                selects.forEach(select => {
+                    if (select.value && select.selectedOptions[0].text !== 'Selecione...') {
+                        respostasPergunta.push(select.selectedOptions[0].text);
+                    }
+                });
+                
+                // Checkboxes marcados
+                const checkboxes = perguntaDiv.querySelectorAll('input[type="checkbox"]:checked');
+                checkboxes.forEach(checkbox => {
+                    const label = checkbox.nextElementSibling;
+                    if (label) {
+                        respostasPergunta.push(label.textContent);
+                    }
+                });
+                
+                // Radio buttons marcados
+                const radios = perguntaDiv.querySelectorAll('input[type="radio"]:checked');
+                radios.forEach(radio => {
+                    const label = radio.nextElementSibling;
+                    if (label) {
+                        respostasPergunta.push(label.textContent);
+                    }
+                });
+                
+                // Text inputs e textareas com conteúdo
+                const textInputs = perguntaDiv.querySelectorAll('input[type="text"], input[type="number"], textarea');
+                textInputs.forEach(input => {
+                    if (input.value && input.value.trim()) {
+                        const label = input.previousElementSibling;
+                        const labelText = label ? label.textContent : '';
+                        respostasPergunta.push(`${labelText} ${input.value}`);
+                    }
+                });
+                
+                // Se há respostas para esta pergunta, adicionar
+                if (respostasPergunta.length > 0) {
+                    respostas.perguntas.push({
+                        pergunta: titulo,
+                        respostas: respostasPergunta
+                    });
+                }
+            });
+
+            return respostas;
+        }
+
+        function gerarConteudoImpressao(respostas) {
+            let html = `
+                <div class="mb-4 text-sm">
+                    <p><strong>Data:</strong> ${new Date(respostas.data).toLocaleDateString('pt-BR')}</p>
+                    <p><strong>Paciente:</strong> ${respostas.paciente} <strong>Idade:</strong> ${respostas.idade} anos</p>
+                    <p><strong>Profissão:</strong> ${respostas.profissao}</p>
+                    <p><strong>Convênio:</strong> ${respostas.convenio}</p>
+                    <p><strong>Como conheceu:</strong> ${respostas.conheceu}</p>
+                </div>
+                <div class="border-t pt-3">
+                    <h3 class="font-bold mb-3 text-sm">RESPOSTAS DO QUESTIONÁRIO:</h3>
+            `;
+
+            respostas.perguntas.forEach(item => {
+                if (item.respostas && item.respostas.length > 0) {
+                    html += `<div class="mb-3 text-xs">
+                        <p class="font-semibold">${item.pergunta}</p>
+                        <ul class="ml-4 list-disc">`;
+                    
+                    item.respostas.forEach(resposta => {
+                        html += `<li>${resposta}</li>`;
+                    });
+                    
+                    html += `</ul></div>`;
+                }
+            });
+
+            html += '</div>';
+            return html;
+        }
+
+        function enviarWhatsApp() {
+            const dados = coletarRespostas();
+            
+            if (!dados.paciente) {
+                alert('Por favor, preencha o nome do paciente antes de enviar.');
+                return;
+            }
+            
+            const mensagem = gerarMensagemWhatsApp(dados);
+            
+            // Codificar a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            
+            // Criar link do WhatsApp
+            const linkWhatsApp = `https://wa.me/?text=${mensagemCodificada}`;
+            
+            // Abrir WhatsApp
+            window.open(linkWhatsApp, '_blank');
+        }
+
+        function gerarMensagemWhatsApp(dados) {
+            let mensagem = `*QUESTIONÁRIO CAPILAR - CLÍNICA*\n`;
+            mensagem += `================================\n\n`;
+            mensagem += `📅 *Data:* ${new Date(dados.data).toLocaleDateString('pt-BR')}\n`;
+            mensagem += `👤 *Paciente:* ${dados.paciente}\n`;
+            mensagem += `🎂 *Idade:* ${dados.idade} anos\n`;
+            mensagem += `💼 *Profissão:* ${dados.profissao}\n`;
+            mensagem += `🏥 *Convênio:* ${dados.convenio}\n`;
+            mensagem += `📱 *Como conheceu:* ${dados.conheceu}\n\n`;
+            mensagem += `*RESPOSTAS DO QUESTIONÁRIO:*\n`;
+            mensagem += `================================\n\n`;
+            
+            dados.perguntas.forEach(item => {
+                if (item.respostas && item.respostas.length > 0) {
+                    mensagem += `*${item.pergunta}*\n`;
+                    item.respostas.forEach(resposta => {
+                        mensagem += `• ${resposta}\n`;
+                    });
+                    mensagem += `\n`;
+                }
+            });
+            
+            mensagem += `_Questionário enviado via sistema da clínica_`;
+            
+            return mensagem;
+        }
+
+        function limparFormulario() {
+            if (confirm('Tem certeza que deseja limpar todo o formulário?')) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    if (element.type === 'checkbox' || element.type === 'radio') {
+                        element.checked = false;
+                    } else if (element.id !== 'data') {
+                        element.value = '';
+                    }
+                });
+            }
+        }
+
+        // Definir data atual ao carregar a página
+        window.onload = function() {
+            document.getElementById('data').value = new Date().toISOString().split('T')[0];
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95ca49b5f240a4f5',t:'MTc1MjA4OTk3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
